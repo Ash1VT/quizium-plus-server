@@ -4,7 +4,7 @@ from typing import List, Optional
 from pydantic import Field
 from pydantic_settings import SettingsConfigDict
 
-from config.constants.directory import LOGS_DIRECTORY, ENV_DIRECTORY
+from config.constants.directory import ENV_DIRECTORY, LOGS_DIRECTORY
 from config.settings.configurations.base import BaseSettings
 
 

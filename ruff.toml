@@ -12,6 +12,7 @@ exclude = [
     ".svn",
     ".tox",
     ".venv",
+    ".pre-commit-config.yaml",
     "__pypackages__",
     "_build",
     "buck-out",

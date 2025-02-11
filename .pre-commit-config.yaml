@@ -5,9 +5,7 @@ repos:
         name: Isort
         entry: poe isort
         language: system
-        pass_filenames: false
       - id: ruff-format
         name: Ruff Formatter
         entry: poe ruff-format
         language: system
-        pass_filenames: false

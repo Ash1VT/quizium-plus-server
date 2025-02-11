@@ -3,17 +3,17 @@ import os
 from loguru import logger
 
 from config.app.manager import AppManager
-from config.constants.logger import SIMPLE_LOG_FORMAT, COMPREHENSIVE_LOG_FORMAT
+from config.constants.logger import COMPREHENSIVE_LOG_FORMAT, SIMPLE_LOG_FORMAT
 from config.logger.handlers.console import ConsoleLogHandler
 from config.logger.handlers.file import FileLogHandler
 from config.logger.handlers.graylog import GraylogLogHandler
+from config.logger.manager import LoggerManager
 from config.orm.configurations.sqlalchemy import AsyncSqlAlchemyOrmConfig
 from config.orm.manager import OrmManager
-from config.settings.configurations.test import TestSettings
-from config.settings.manager import SettingsManager
-from config.logger.manager import LoggerManager
 from config.settings.configurations.develop import DevelopSettings
 from config.settings.configurations.production import ProductionSettings
+from config.settings.configurations.test import TestSettings
+from config.settings.manager import SettingsManager
 
 configuration = os.getenv("CONFIGURATION", "development")
 env_file = os.getenv("ENV_FILE", ".env")

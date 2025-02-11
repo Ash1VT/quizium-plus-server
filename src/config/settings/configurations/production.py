@@ -21,7 +21,9 @@ class ProductionSettings(BaseSettings):
     log_level: str = "INFO"
     log_handlers: List[str] = ["graylog"]
 
-    file_path: Path = Field(default=Path(), validate_default=False, exclude=True)
+    file_path: Path = Field(
+        default=Path(), validate_default=False, exclude=True
+    )
     filename: str = Field(default="", validate_default=False, exclude=True)
 
     # GRAYLOG LOGGER
