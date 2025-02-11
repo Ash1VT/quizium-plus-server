@@ -20,6 +20,7 @@ isort = "^6.0.0"
 pytest = "^8.3.4"
 pytest-asyncio = "^0.25.3"
 aiosqlite = "^0.21.0"
+pre-commit = "^4.1.0"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.32.2"
@@ -67,6 +68,15 @@ envfile = ".env"
 [tool.poe.tasks.test]
 help = "Run tests"
 cmd = "env PYTHONPATH=src CONFIGURATION=test ENV_FILE=.env.test pytest tests"
+
+[tool.poe.tasks.dev-gen-migrations]
+help = "Generate development migrations"
+cmd = "env CONFIGURATION=development ENV_FILE=.env alembic revision --autogenerate"
+
+[tool.poe.tasks.prod-gen-migrations]
+help = "Generate production migrations"
+cmd = "env CONFIGURATION=production ENV_FILE=.env alembic revision --autogenerate"
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
