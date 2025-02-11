@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "quizium-plus-server"
+version = "0.1.0"
+description = "Backend API for Quizium Plus"
+authors = [
+    "Nikita Panasevich <nikita.panasevitch@yandex.by>"
+]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+uvicorn = "^0.34.0"
+fastapi = "^0.115.8"
+pydantic-settings = "^2.7.1"
+loguru = "^0.7.3"
+graypy = "^2.1.0"
+sqlalchemy = "^2.0.38"
+asyncpg = "^0.30.0"
+alembic = "^1.14.1"
+isort = "^6.0.0"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.3"
+aiosqlite = "^0.21.0"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.32.2"
+flake8 = "^7.1.1"
+mypy = "^1.15.0"
+ruff = "^0.9.5"
+pylint = "^3.3.4"
+wemake-python-styleguide = "^1.0.0"
+flake8-bugbear = "^24.12.12"
+flake8-print = "^5.0.0"
+
+[tool.poe.tasks.pylint]
+help = "Lint the code using pylint"
+cmd = "pylint src"
+
+[tool.poe.tasks.ruff-check]
+help = "Lint the code using ruff"
+cmd = "ruff check src"
+
+[tool.poe.tasks.ruff-format]
+help = "Format the code using ruff"
+cmd = "ruff format src"
+
+[tool.poe.tasks.isort]
+help = "Sort imports using isort"
+cmd = "isort src"
+
+[tool.poe.tasks.mypy]
+help = "Check the code using mypy"
+cmd = "mypy src --strict-optional"
+
+[tool.poe.tasks.flake]
+help = "Check the code using flake8"
+cmd = "flake8 src"
+
+[tool.poe.tasks.dev]
+help = "Run development server"
+cmd = "env PYTHONPATH=src CONFIGURATION=development ENV_FILE=.env uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload"
+
+[tool.poe.tasks.prod]
+help = "Run production server"
+cmd = "env PYTHONPATH=src CONFIGURATION=production ENV_FILE=.env uvicorn src.main:app --host ${WEB_APP_HOST} --port ${WEB_APP_PORT} --workers ${WORKERS}"
+envfile = ".env"
+
+[tool.poe.tasks.test]
+help = "Run tests"
+cmd = "env PYTHONPATH=src CONFIGURATION=test ENV_FILE=.env.test pytest tests"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
