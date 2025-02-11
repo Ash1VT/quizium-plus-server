@@ -1,3 +1,4 @@
+files: src/
 repos:
   - repo: local
     hooks:
