@@ -42,7 +42,6 @@ LoggerManager.register_handler(
 )
 
 
-
 LoggerManager.register_handler(
     "graylog",
     GraylogLogHandler(
