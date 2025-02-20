@@ -5,7 +5,7 @@ on: push
 jobs:
   lint:
     name: Run linters 
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     services:
       postgres:
         image: postgres:11.5-alpine
@@ -19,9 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python 3.13
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.13
+          python-version: '3.13.2'
       - name: Install dependencies
         run: |
           pip install poetry
