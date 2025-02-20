@@ -8,9 +8,13 @@ from config.settings.configurations.develop import DevelopSettings
 from config.settings.configurations.production import ProductionSettings
 from config.settings.configurations.test import TestSettings
 from config.settings.manager import SettingsManager
-from core.orm.sqlalchemy.base import Base
+from core.orm.sqlalchemy.models.base import Base
 
-configuration = os.getenv("CONFIGURATION")
+configuration = os.getenv("CONFIGURATION", None)
+
+if not configuration:
+    raise ValueError("CONFIGURATION not set")
+
 SettingsManager.register_config("development", DevelopSettings)
 SettingsManager.register_config("production", ProductionSettings)
 SettingsManager.register_config("test", TestSettings)
