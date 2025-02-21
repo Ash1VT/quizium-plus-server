@@ -8,7 +8,9 @@ from config.settings.configurations.develop import DevelopSettings
 from config.settings.configurations.production import ProductionSettings
 from config.settings.configurations.test import TestSettings
 from config.settings.manager import SettingsManager
-from core.orm.sqlalchemy.models.base import Base
+from core.models.sqlalchemy.base import Base
+from core.models.sqlalchemy.locale import Locale
+from modules.blog.models.sqlalchemy import Blog, BlogTranslation
 
 configuration = os.getenv("CONFIGURATION", None)
 
